@@ -15,11 +15,13 @@ export default {};
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-primary;
+  // background-color: $color-primary;
+  background-color: $color-secondary;
 
   &__title {
     font-size: 2rem;
     font-weight: 300;
+    color: $color-white;
   }
 
   .inner {
