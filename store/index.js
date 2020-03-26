@@ -20,7 +20,7 @@ export const actions = {
       source: news.source,
       published: moment()
         .utc(news.publishedAt)
-        .fromNow(true)
+        .format('dddd, Do, h:mm')
     }));
     commit('setNews', news);
   },
@@ -36,8 +36,7 @@ export const actions = {
       source: news.source,
       published: moment()
         .utc(news.publishedAt)
-        // .fromNow(true)
-        .format('ddd, hA')
+        .format('dddd, Do, h:mm')
     }));
     commit('setNews', news);
   },
@@ -52,10 +51,8 @@ export const actions = {
       source: news.source,
       published: moment()
         .utc(news.publishedAt)
-        // .fromNow(true)
-        .format('ddd, hA')
+        .format('dddd, Do, h:mm')
     }));
-    console.log(news);
     commit('setNews', news);
   }
 };
