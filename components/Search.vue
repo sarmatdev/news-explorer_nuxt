@@ -24,7 +24,7 @@ export default {
       if (this.query.length === 0) {
         return;
       } else {
-        this.$store.dispatch('searchNews', this.query);
+        this.$router.push(`/search/${this.query}`);
         this.query = '';
       }
     }
@@ -34,19 +34,22 @@ export default {
 
 <style lang="scss">
 .search {
-  width: 20rem;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 2rem;
 
   &__input {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding: 0.5rem;
     border: none;
     outline: none;
+    width: 70%;
     border-radius: 0.5rem;
+    transition: all 0.4s ease;
+
+    &:focus {
+      width: 100%;
+    }
   }
 
   &__button {
