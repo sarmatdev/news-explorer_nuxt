@@ -10,9 +10,23 @@ export const mutations = {
 };
 export const actions = {
   async getNews({ commit }) {
-    const country = await this.$axios.get(`https://ipapi.co/country`);
     const { data } = await this.$axios.get(
-      `http://newsapi.org/v2/top-headlines?country=${country.data}&apiKey=${process.env.API_KEY}`
+      `http://newsapi.org/v2/top-headlines?country=ru&apiKey=${process.env.API_KEY}`
+    );
+    const news = data.articles.map(news => ({
+      title: news.title,
+      url: news.url,
+      description: news.description,
+      source: news.source,
+      published: moment()
+        .utc(news.publishedAt)
+        .fromNow(true)
+    }));
+    commit('setNews', news);
+  },
+  async getNewsByСategory({ commit }, category) {
+    const { data } = await this.$axios.get(
+      `http://newsapi.org/v2/top-headlines?country=ru&category=${category}&apiKey=6ccbf835b8b54f5bbd4155e912a37b89`
     );
 
     const news = data.articles.map(news => ({
@@ -22,7 +36,8 @@ export const actions = {
       source: news.source,
       published: moment()
         .utc(news.publishedAt)
-        .fromNow(true)
+        // .fromNow(true)
+        .format('ddd, hA')
     }));
     commit('setNews', news);
   }
