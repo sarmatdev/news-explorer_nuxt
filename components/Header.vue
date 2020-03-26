@@ -9,14 +9,17 @@
         <Dropdown />
       </ul>
     </nav>
+    <Search />
   </header>
 </template>
 
 <script>
 import Dropdown from '@/components/Dropdown';
+import Search from '@/components/Search';
 export default {
   components: {
-    Dropdown
+    Dropdown,
+    Search
   }
 };
 </script>

@@ -26,7 +26,7 @@ export const actions = {
   },
   async getNewsByСategory({ commit }, category) {
     const { data } = await this.$axios.get(
-      `http://newsapi.org/v2/top-headlines?country=ru&category=${category}&apiKey=6ccbf835b8b54f5bbd4155e912a37b89`
+      `http://newsapi.org/v2/top-headlines?country=ru&category=${category}&apiKey=${process.env.API_KEY}`
     );
 
     const news = data.articles.map(news => ({
@@ -39,6 +39,23 @@ export const actions = {
         // .fromNow(true)
         .format('ddd, hA')
     }));
+    commit('setNews', news);
+  },
+  async searchNews({ commit }, query) {
+    const { data } = await this.$axios.get(
+      `https://newsapi.org/v2/everything?q=${query}&apiKey=${process.env.API_KEY}`
+    );
+    const news = data.articles.map(news => ({
+      title: news.title,
+      url: news.url,
+      description: news.description,
+      source: news.source,
+      published: moment()
+        .utc(news.publishedAt)
+        // .fromNow(true)
+        .format('ddd, hA')
+    }));
+    console.log(news);
     commit('setNews', news);
   }
 };
