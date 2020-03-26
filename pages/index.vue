@@ -3,14 +3,14 @@
 </template>
 
 <script>
-import NewsList from "@/components/NewsList";
+import NewsList from '@/components/NewsList';
 
 export default {
   components: {
     NewsList
   },
   async fetch({ store }) {
-    await store.dispatch("getNews");
+    await store.dispatch('getNews');
   }
 };
 </script>

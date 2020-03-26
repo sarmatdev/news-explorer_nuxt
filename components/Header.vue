@@ -1,10 +1,11 @@
 <template>
   <header class="header">
-    <h1 class="header__title">News Explorer</h1>
     <nav>
       <ul class="menu">
         <nuxt-link tag="li" class="menu__item" to="/">
-          Top Headlines
+          <span>
+            Top Headlines
+          </span>
         </nuxt-link>
         <Dropdown />
       </ul>
@@ -28,16 +29,9 @@ export default {
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: $color-secondary;
   height: 5rem;
-  position: relative;
-
-  &__title {
-    font-size: 1.6rem;
-    font-weight: 300;
-    color: $color-white;
-  }
 }
 
 .menu {
@@ -65,6 +59,7 @@ export default {
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
+    z-index: 99;
 
     &__link {
       transition: all 0.2s ease;

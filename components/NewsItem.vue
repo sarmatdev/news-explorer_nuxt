@@ -6,32 +6,16 @@
       </a>
       <span>({{ news.source.name }})</span>
     </h1>
-    <p class="news-card__published">Published {{ news.published }} ago</p>
-    <!-- <font-awesome-icon
-      class="news-card__icon"
-      :class="{ rotate: active }"
-      @click="expand"
-      :icon="['fas', 'chevron-down']"
-    /> -->
-    <!-- <article class="news-card__description" :class="{ active }">
-      {{ news.description }}
-    </article> -->
+    <p class="news-card__published">
+      Published —
+      {{ news.published }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['news'],
-  data() {
-    return {
-      active: false
-    };
-  },
-  methods: {
-    expand() {
-      this.active = !this.active;
-    }
-  }
+  props: ['news']
 };
 </script>
 
@@ -81,6 +65,10 @@ export default {
     a {
       text-decoration: none;
       color: $color-secondary;
+
+      &:hover {
+        border-bottom: 1px solid $color-secondary;
+      }
 
       &:visited {
         color: $color-secondary;
