@@ -11,6 +11,21 @@ export default {
   },
   async fetch({ store }) {
     await store.dispatch('getNews');
+  },
+  head() {
+    return {
+      titleTemplate: '%s | Top Headlines',
+      meta: [
+        {
+          name: 'description',
+          content: 'News Explorer app'
+        },
+        {
+          name: 'keywords',
+          content: 'news, app, nuxt, ssr'
+        }
+      ]
+    };
   }
 };
 </script>
